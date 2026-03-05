@@ -1,8 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using AssetFlow.Api.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+//injeção de dependencia
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=assetflow.db")); //configuração do sqlite
 
 var app = builder.Build();
 
